@@ -1,0 +1,17 @@
+#gameSection {
+    width: 100%;
+    height: 95vh;
+    border: solid 1px black;
+    position: relative;
+}
+
+#paddle {
+    background-color: aqua;
+    position: absolute;
+}
+
+#ball {
+    background-color: aquamarine;
+    position: absolute;
+    border-radius: 50%;
+}

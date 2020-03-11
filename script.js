@@ -53,7 +53,7 @@
 //     // Move paddle to the right 
 //     function moveRight() {
 //             PADDLE.x++
-        
+
 //     }
 //     console.log(sectionWidth - PADDLESTYLE.width / 2, parseInt(paddle.style.left), PADDLESTYLE.width, PADDLESTYLE.x + PADDLESTYLE.width)
 //     // Move paddle to the left
@@ -116,7 +116,7 @@ $(document).ready(function () {
             paddle.style.left = parseInt(paddle.style.left) + increaseSpeed + "px";
         }
     }
-    console.log(sectionWidth - PADDLESTYLE.width / 2, parseInt(paddle.style.left), PADDLESTYLE.width, PADDLESTYLE.x + PADDLESTYLE.width)
+    // console.log(sectionWidth - PADDLESTYLE.width / 2, parseInt(paddle.style.left), PADDLESTYLE.width, PADDLESTYLE.x + PADDLESTYLE.width)
     // Move paddle to the left
     function moveLeft() {
         if (parseInt(paddle.style.left) >= 20 && parseInt(paddle.style.left) < sectionWidth - PADDLESTYLE.width) {
@@ -156,15 +156,14 @@ $(document).ready(function () {
     //     }
     // }
 
-    
 
+let interval
     function startBall() {
-        let interval = setInterval(initialBallMove, 2);
+        interval = setInterval(initialBallMove, 2);
         let interval2 = setInterval(topHit, 5);
         if (parseInt(ball.style.width) == RADIUS && parseInt(ball.style.height) == RADIUS && parseInt(ball.style.top) == BALLSTYLE.y && parseInt(ball.style.left) == BALLSTYLE.x) {
             initialBallMove();
         }
-        
         else if (parseInt(ball.style.top) == sectionHeight - RADIUS - sectionHeight + RADIUS) {
             clearInterval(interval)
             topHit();
@@ -176,44 +175,50 @@ $(document).ready(function () {
         BALLSTYLE.x--;
         BALLSTYLE.y--;
         ball.style.top = BALLSTYLE.y + 'px';
-        ball.style.left = BALLSTYLE.x + 'px';        
+        ball.style.left = BALLSTYLE.x + 'px';
+        if (parseInt(ball.style.top) == sectionHeight - RADIUS - sectionHeight + RADIUS) {
+            clearInterval(interval)
+            topHit();
+            
+        }
+        function topHit() {
+            BALLSTYLE.x--;
+            BALLSTYLE.y++;
+            ball.style.top = BALLSTYLE.y + 'px';
+            ball.style.left = BALLSTYLE.x + 'px';
+        }
     }
-    console.log(ball.style.top = BALLSTYLE.y + 'px')
+    // console.log(ball.style.top = BALLSTYLE.y + 'px')
+
     
-    function topHit() {
-        BALLSTYLE.x++
-        BALLSTYLE.y++;
-        ball.style.top = BALLSTYLE.y + 'px';
-        ball.style.left = BALLSTYLE.x + 'px'; 
-    }
 
 
 
 
-//     // Second try
-// //   if (parseInt(ball.style.top) == 0) {
-// //     BALLSTYLE.x--;
-// //     BALLSTYLE.y--;
-// //     ball.style.top = BALLSTYLE.y + 'px';
-// //     ball.style.left = BALLSTYLE.x + 'px';
-// //   } 
-// //   else if(parseInt(ball.style.left) <= 0) {
-// //     BALLSTYLE.x++;
-// //     BALLSTYLE.y++;
-// //     ball.style.top = BALLSTYLE.y + 'px';
-// //     ball.style.left = BALLSTYLE.x + 'px';
-// //   }
-// // || parseInt(ball.style.left) == 0 || parseInt(ball.style.left) == sectionWidth - RADIUS || parseInt(ball.style.top) == sectionHeight
-// //   else if (parseInt(ball.style.top) == 0 || parseInt(ball.style.left) == sectionWidth - RADIUS) {
-// //     BALLSTYLE.x--;
-// //     BALLSTYLE.y++;
-// //     ball.style.top = BALLSTYLE.y + 'px';
-// //     ball.style.left = BALLSTYLE.x + 'px';
-// //   }
-// //  else {
-// //     BALLSTYLE.x--;
-// //     BALLSTYLE.y--;
-// //     ball.style.top = BALLSTYLE.y + 'px';
-// //     ball.style.left = BALLSTYLE.x + 'px';
-// //   }
- });
+    //     // Second try
+    // //   if (parseInt(ball.style.top) == 0) {
+    // //     BALLSTYLE.x--;
+    // //     BALLSTYLE.y--;
+    // //     ball.style.top = BALLSTYLE.y + 'px';
+    // //     ball.style.left = BALLSTYLE.x + 'px';
+    // //   } 
+    // //   else if(parseInt(ball.style.left) <= 0) {
+    // //     BALLSTYLE.x++;
+    // //     BALLSTYLE.y++;
+    // //     ball.style.top = BALLSTYLE.y + 'px';
+    // //     ball.style.left = BALLSTYLE.x + 'px';
+    // //   }
+    // // || parseInt(ball.style.left) == 0 || parseInt(ball.style.left) == sectionWidth - RADIUS || parseInt(ball.style.top) == sectionHeight
+    // //   else if (parseInt(ball.style.top) == 0 || parseInt(ball.style.left) == sectionWidth - RADIUS) {
+    // //     BALLSTYLE.x--;
+    // //     BALLSTYLE.y++;
+    // //     ball.style.top = BALLSTYLE.y + 'px';
+    // //     ball.style.left = BALLSTYLE.x + 'px';
+    // //   }
+    // //  else {
+    // //     BALLSTYLE.x--;
+    // //     BALLSTYLE.y--;
+    // //     ball.style.top = BALLSTYLE.y + 'px';
+    // //     ball.style.left = BALLSTYLE.x + 'px';
+    // //   }
+});
